@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'recipeApp/index.css' %}">
+
+</head>
+
+<body>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Submit</button>
+</form>
+
+</body>
+</html>

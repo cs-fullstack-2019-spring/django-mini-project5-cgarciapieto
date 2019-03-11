@@ -1,0 +1,34 @@
+{% extends 'recipeApp/base.html' %}
+
+{% block header%}
+<h1>Welcome</h1>
+
+{% endblock header%}
+
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+
+
+{% if allEntries %}
+<ul>
+    {% for eachEntry in allEntries %}
+    <li>{{ eachEntry.name }} <a href="{% url 'editRecipe' eachEntry.id %}">Edit</a>    <a href="{% url 'deleteRecipe' eachEntry.id %}">Delete</a></li>
+    {% endfor %}
+</ul>
+
+
+{% else %}
+<h2>Add your recipe</h2>
+{% endif %}
+
+
+{% else %}
+<p><a href="{% url 'newUser' %}">Create a user</a> or</p>
+<p><a href="{% url 'login' %}">Log in</a></p>
+{% endif %}
+
+
+{% endblock content %}
