@@ -16,6 +16,7 @@
 <ul>
     {% for eachEntry in allEntries %}
     <li>{{ eachEntry.name }} <a href="{% url 'editRecipe' eachEntry.id %}">Edit</a>    <a href="{% url 'deleteRecipe' eachEntry.id %}">Delete</a></li>
+
     {% endfor %}
 </ul>
 

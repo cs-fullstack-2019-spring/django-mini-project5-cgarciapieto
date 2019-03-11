@@ -4,7 +4,7 @@ from .forms import RecipeModel, NewProfileModel, newProfileForm, RecipeForm
 
 from django.contrib.auth.models import User
 
-
+# this page renders from startup, if user is logged in, the user can see all entries
 def index(request):
     if request.user.is_authenticated:
 
@@ -18,7 +18,7 @@ def index(request):
 
     return render(request, 'recipeApp/index.html', context)
 
-
+# this creates a user and saves it the database
 def newUser(request):
 
         form = newProfileForm(request.POST or None)
@@ -33,7 +33,7 @@ def newUser(request):
                    }
         return render(request, 'recipeApp/newuser.html', context)
 
-
+# function that renders the form to add a recipe to a LOGGED IN user
 def addRecipe(request):
     form = RecipeForm()
     context = {
@@ -41,7 +41,7 @@ def addRecipe(request):
     }
     return render(request, 'recipeApp/addrecipe.html', context)
 
-
+# renders the data/details of the page.
 def recipeInfo(request):
     form = RecipeForm(request.POST)
     print(request.user)
@@ -53,19 +53,7 @@ def recipeInfo(request):
     return render(request, 'recipeApp/addrecipe.html',)
 
 
-    # if form.is_valid():
-    #     form.save()
-    #     RecipeModel.objects.create(name=request.POST['name'], imageURL=request.POST['imageURL'],
-    #                                description=request.POST['description'], ingredients=request.POST['ingredients'],
-    #                                dateCreated=request.POST['dateCreated'])
-    #
-    #
-    #     return redirect('index')
-    # else:
-    #     context = {'recipeform:form,'
-    #                'errors': form.errors}
-    #     return render(request, 'recipeApp/addrecipe.html', context)
-
+# renders a selected object and allows it to be changed/edited,
 
 def editRecipe(request, recipeID):
     editthisrecipe = get_object_or_404(RecipeModel, pk=recipeID)
@@ -84,7 +72,7 @@ def editRecipe(request, recipeID):
 
     return render(request, 'recipeApp/editrecipe.html', context)
 
-
+# deletes a recipe
 def deleteRecipe(request, recipeID):
     deleteThisrecipe = get_object_or_404(RecipeModel, pk=recipeID)
     deleteThisrecipe.deltet()
