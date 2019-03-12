@@ -34,3 +34,5 @@ The profile page should allow you to edit the logged in users:
 
 ## Challenge
 Include a delete button
+<hr>
+0.5 points. After logging out manually I looked throught the code to see that addRecipe worked and all recipes are being shown.
